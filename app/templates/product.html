@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a class="link" href="/catalog">← Volver al catálogo</a>
+    </div>
+
+    <div class="product">
+      <div class="product__left">
+        <div class="card card--padded">
+          <div class="product__titleWrap">
+            <h1 class="product__title">{{ product.name }}</h1>
+            <div class="product__chips">
+              <span class="chip">{{ product.category }}</span>
+              <span class="chip chip--accent">{{ product.price_label }}</span>
+              <span class="chip">{{ product.license }}</span>
+            </div>
+          </div>
+
+          <div class="muted mt8">{{ product.short_desc }}</div>
+
+          <div class="product__viewer mt16">
+            <model-viewer
+              class="mv mv--product"
+              src="{{ product.preview_glb }}"
+              camera-controls
+              auto-rotate
+              shadow-intensity="1"
+              exposure="1"
+              ar
+              alt="{{ product.name }}"
+            ></model-viewer>
+          </div>
+
+          {% if product.images and product.images|length > 0 %}
+          <div class="thumbs mt12">
+            {% for img in product.images %}
+              <button class="thumb" type="button" data-swap-img="{{ img }}" aria-label="Ver imagen">
+                <span class="thumb__img" style="background-image:url('{{ img }}')"></span>
+              </button>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <div class="product__actions mt16">
+            <a class="btn btn--primary" href="{{ product.hotmart_url }}" target="_blank" rel="noopener noreferrer">
+              Comprar en Hotmart
+            </a>
+            <a class="btn btn--ghost" href="/faq">Dudas / FAQ</a>
+          </div>
+
+          <hr class="hr mt16" />
+
+          <div class="rich">
+            <h2>Descripción</h2>
+            <p>{{ product.long_desc }}</p>
+
+            <h3>Material recomendado</h3>
+            <ul>
+              {% for m in product.materials %}
+                <li>{{ m }}</li>
+              {% endfor %}
+            </ul>
+
+            <h3>Settings sugeridos</h3>
+            <div class="settings">
+              <div class="settings__row">
+                <div class="settings__label">Layer height</div>
+                <div class="settings__value">{{ product.print_settings.layer_height }}</div>
+              </div>
+              <div class="settings__row">
+                <div class="settings__label">Infill</div>
+                <div class="settings__value">{{ product.print_settings.infill }}</div>
+              </div>
+              <div class="settings__row">
+                <div class="settings__label">Supports</div>
+                <div class="settings__value">{{ product.print_settings.supports }}</div>
+              </div>
+              <div class="settings__row">
+                <div class="settings__label">Nozzle</div>
+                <div class="settings__value">{{ product.print_settings.nozzle }}</div>
+              </div>
+            </div>
+
+            <div class="note mt16">
+              <strong>Nota:</strong> este es un MVP. Podés sumar variantes por auto/modelo, bundles, licencia comercial,
+              y archivos STL/3MF para descarga.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="product__right">
+        <div class="card card--padded card--sticky">
+          <div class="card__title">Compra rápida</div>
+          <div class="muted mt8">Abrimos el checkout en una nueva pestaña.</div>
+
+          <div class="price mt16">
+            <span class="price__value">{{ product.price_label }}</span>
+            <span class="chip">{{ product.license }}</span>
+          </div>
+
+          <a class="btn btn--primary mt16" href="{{ product.hotmart_url }}" target="_blank" rel="noopener noreferrer">
+            Comprar ahora
+          </a>
+
+          <a class="btn btn--ghost mt10" href="/catalog">Seguir mirando</a>
+
+          <hr class="hr mt16" />
+
+          <div class="muted small">
+            Consejo: si va dentro del auto, considerá PETG/ABS/ASA por temperatura.
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <h1 class="section__title">Catálogo</h1>
+      <div class="muted">Buscar por texto o filtrar por categoría.</div>
+    </div>
+
+    <form class="filters card card--padded" method="get" action="/catalog">
+      <div class="filters__grid">
+        <div class="field">
+          <label class="label" for="q">Buscar</label>
+          <input
+            class="input"
+            id="q"
+            name="q"
+            type="text"
+            value="{{ q }}"
+            placeholder="Ej: gauge, interior, soporte..."
+          />
+        </div>
+
+        <div class="field">
+          <label class="label" for="category">Categoría</label>
+          <select class="select" id="category" name="category">
+            <option value="all" {% if category == "all" %}selected{% endif %}>Todas</option>
+            {% for c in categories %}
+              <option value="{{ c }}" {% if category == c %}selected{% endif %}>{{ c }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="field field--actions">
+          <label class="label label--spacer">Acciones</label>
+          <button class="btn btn--primary" type="submit">Filtrar</button>
+          <a class="btn btn--ghost" href="/catalog">Reset</a>
+        </div>
+      </div>
+    </form>
+
+    {% if products|length == 0 %}
+      <div class="empty card card--padded">
+        <div class="empty__title">Sin resultados</div>
+        <div class="muted">Probá con otro texto o elegí “Todas”.</div>
+      </div>
+    {% else %}
+      <div class="grid grid--3 mt16">
+        {% for p in products %}
+        <a class="card card--hover" href="/p/{{ p.slug }}">
+          <div class="card__thumb" style="background-image:url('{{ (p.images[0] if p.images and p.images|length > 0 else '/static/img/hero.jpg') }}')"></div>
+          <div class="card__body">
+            <div class="card__top">
+              <span class="chip">{{ p.category }}</span>
+              <span class="chip chip--accent">{{ p.price_label }}</span>
+            </div>
+            <div class="card__title">{{ p.name }}</div>
+            <div class="muted">{{ p.short_desc }}</div>
+            <div class="card__bottom">
+              <span class="chip">{{ p.license }}</span>
+              <span class="link small">Ver →</span>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

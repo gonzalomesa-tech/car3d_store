@@ -1,0 +1,46 @@
+{
+  "cars": [
+    {
+      "id": "c001",
+      "name": "Chevrolet Spark GT",
+      "slug": "Spark GT 2012",
+      "short_desc": "click aquí para ver tu Spark GT.",
+      "glb": "/static/models/sparkgt_v2.glb"
+    },
+    {
+      "id": "c002",
+      "name": "Audi R8",
+      "slug": "Audi R8 2010",
+      "short_desc": "click aquí para ver tu Audi R8.",
+      "glb": "/static/models/audi_r8.glb"
+    },
+    {
+      "id": "c003",
+      "name": "Subaru Outback",
+      "slug": "Subaru Outback 2022",
+      "short_desc": "click aquí para ver tu Outback.",
+      "glb": "/static/models/2022_subaru_outback.glb"
+    },
+    {
+      "id": "c004",
+      "name": "Subaru Forester",
+      "slug": "Subaru Forester 2020",
+      "short_desc": "click aquí para ver tu Forester.",
+      "glb": "/static/models/2020_subaru_forester.glb"
+    },
+    {
+      "id": "c005",
+      "name": "Toyota Corolla Cross",
+      "slug": "Toyota Corolla Cross 2021",
+      "short_desc": "click aquí para ver tu Corolla Cross.",
+      "glb": "/static/models/2021_toyota_corolla_cross.glb"
+    },
+    {
+      "id": "c006",
+      "name": "Toyota Supra",
+      "slug": "Toyota Supra MK4",
+      "short_desc": "click aquí para ver tu Supra.",
+      "glb": "/static/models/toyota_supra_mk4_custom.glb"
+    }
+  ]
+}

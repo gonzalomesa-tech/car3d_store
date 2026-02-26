@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <h1 class="section__title">Busca tu auto</h1>
+      <div class="muted">Elige un auto para previsualizar accesorios y piezas.</div>
+    </div>
+
+    <div class="autos">
+      <!-- Viewer -->
+      <div class="autos__viewer card card--padded">
+        <div class="card__title">Viewer 3D</div>
+        <div class="muted small mt8" id="autosTitle">
+          {% if cars and cars|length > 0 %}{{ cars[0].name }}{% else %}Sin autos cargados{% endif %}
+        </div>
+
+        <model-viewer
+          id="autosViewer"
+          class="mv mv--hotspots mt12"
+          src="{% if cars and cars|length > 0 %}{{ cars[0].glb }}{% else %}/static/models/sparkgt_v2.glb{% endif %}"
+          camera-controls
+          shadow-intensity="1"
+          exposure="1"
+          interaction-prompt="auto"
+          ar
+          alt="Auto 3D"
+        ></model-viewer>
+
+        <div class="muted small mt8">
+          Tip: arrastrar = rotar · rueda = zoom · pinza en mobile
+        </div>
+      </div>
+
+      <!-- Lista -->
+      <div class="autos__list">
+        <div class="card card--padded">
+          <div class="card__title">Autos en stock</div>
+          <div class="muted small mt8">
+          </div>
+
+          <!-- ✅ Buscador -->
+          <div class="field mt12">
+            <label class="label" for="carSearch">Buscar auto</label>
+            <input
+              id="carSearch"
+              class="input"
+              type="text"
+              placeholder="Ej: chevrolet spark gt, subaru forester, etc"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <!-- ✅ Grid con ID correcto -->
+        <div class="grid autos__grid mt12" id="autosGrid">
+          {% for c in cars %}
+          <button
+            class="card card--hover autos__item"
+            type="button"
+            data-car-src="{{ c.glb }}"
+            data-car-name="{{ c.name }}"
+            data-car-slug="{{ c.slug }}"
+            data-filter="{{ (c.name ~ ' ' ~ c.slug)|lower }}"
+            aria-label="Cargar {{ c.name }} en el viewer"
+          >
+            <div class="card__body">
+              <div class="card__top">
+                <span class="chip">Auto</span>
+                <span class="chip chip--accent">{{ c.slug }}</span>
+              </div>
+
+              <div class="card__title car-title"
+                   style="color: var(--red); -webkit-text-fill-color: var(--red);">
+                {{ c.name }}
+              </div>
+
+              <div class="muted">{{ c.short_desc }}</div>
+
+              <div class="mt12">
+                <span class="link small">Cargar en viewer →</span>
+              </div>
+            </div>
+          </button>
+          {% endfor %}
+        </div>
+
+        <!-- ✅ Empty state con ID correcto -->
+        <div class="card card--padded mt12" id="autosEmpty" style="display:none;">
+          <div class="empty__title">Sin resultados</div>
+          <div class="muted">Probá con otro texto.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

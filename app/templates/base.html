@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ page_title or "Car3D Files" }}</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}?v=7">
+  <script defer src="{{ url_for('static', path='js/app.js') }}?v=7"></script>
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+
+<body>
+  <div class="app-shell">
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href="/">
+          <span class="brand__mark">CAR<span class="brand__markAccent">3D</span></span>
+          <span class="brand__text">Files</span>
+        </a>
+
+        <nav class="nav">
+          <a class="nav__link" href="/catalog">Catálogo</a>
+          <a class="nav__link" href="/autos">Autos</a>
+          <a class="nav__link" href="/faq">FAQ</a>
+          <a class="nav__link" href="/legal">Legal</a>
+        </nav>
+
+        <div class="header__actions">
+          <a class="btn btn--ghost" href="/catalog">Ver catálogo</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="muted">© {{ 2026 }} Car3D Files · Archivos 3D orientados a autos</div>
+        <div class="muted"><a href="/legal">Términos & Licencia</a></div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

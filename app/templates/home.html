@@ -1,13 +1,12 @@
 {% extends "base.html" %}
-
 {% block content %}
+
 <section class="hero">
   <div class="container hero__grid">
     <div class="hero__copy">
       <h1 class="hero__title">Car3D Files</h1>
       <p class="hero__subtitle">
-        Archivos listos para imprimir en 3D orientados a autos: interior,
-        exterior, soportes, detalles y upgrades.
+        Archivos listos para imprimir en 3D orientados a autos: interior, exterior, soportes, detalles y upgrades.
       </p>
 
       <div class="hero__cta">
@@ -24,10 +23,9 @@
     <div class="hero__media card card--padded">
       <div class="card__header">
         <div class="card__title">Demo Viewer 3D</div>
-        <div class="muted">Rota, hazle zoom y pincha los titulos de las pieza para ver productos relacionados.</div>
+        <div class="muted">Rotá el modelo y probá la selección de piezas (MVP).</div>
       </div>
 
-      <!-- Viewer con hotspots internos -->
       <div class="viewer3d">
         <model-viewer
           id="carModel"
@@ -39,93 +37,11 @@
           interaction-prompt="auto"
           ar
           alt="Spark GT 3D"
-        >
-          <!-- Hotspots: se calibran con ALT+click + asignar -->
-          <button
-            class="mv-hotspot"
-            slot="hotspot-ale"
-            data-position="0m 0m 0m"
-            data-normal="0m 1m 0m"
-            data-target="/catalog?q=aleron"
-            aria-label="Alerón"
-          >
-            <span class="mv-hotspot__dot"></span>
-            <span class="mv-hotspot__label">Alerón</span>
-          </button>
-
-          <button
-            class="mv-hotspot"
-            slot="hotspot-frontlip"
-            data-position="0m 0m 0m"
-            data-normal="0m 1m 0m"
-            data-target="/catalog?q=front%20lip"
-            aria-label="Front lip"
-          >
-            <span class="mv-hotspot__dot"></span>
-            <span class="mv-hotspot__label">Front lip</span>
-          </button>
-
-          <button
-            class="mv-hotspot"
-            slot="hotspot-guard"
-            data-position="0m 0m 0m"
-            data-normal="0m 1m 0m"
-            data-target="/catalog?q=guardabarros"
-            aria-label="Guardabarros"
-          >
-            <span class="mv-hotspot__dot"></span>
-            <span class="mv-hotspot__label">Guardabarros</span>
-          </button>
-
-          <button
-            class="mv-hotspot"
-            slot="hotspot-side"
-            data-position="0m 0m 0m"
-            data-normal="0m 1m 0m"
-            data-target="/catalog?q=lip%20lateral"
-            aria-label="Lip lateral"
-          >
-            <span class="mv-hotspot__dot"></span>
-            <span class="mv-hotspot__label">Lip lateral</span>
-          </button>
-
-        </model-viewer>
-
-        <div class="viewer3d__hint muted small mt8">
-          • Rotar: arrastrar • Zoom: rueda / pinza •
-          <span class="chip chip--accent">ALT + click</span> para capturar coordenadas de una pieza
-        </div>
+        ></model-viewer>
 
         <div class="mt12">
-          <a class="btn btn--ghost" href="/autos">Busca tu auto aquí</a>
+          <a class="btn btn--ghost" href="/autos">Buscá tu auto</a>
         </div>
-
-        <!-- ✅ NUEVO: Panel calibración -->
-        <details class="calib card card--padded mt12">
-          <summary class="calib__summary">Calibración de hotspots (MVP)</summary>
-
-          <div class="muted small mt8">
-            1) Mantené <b>ALT</b> y hacé click en la parte exacta del modelo (alerón/lip/etc).<br>
-            2) Luego apretá “Asignar” en la pieza correspondiente.<br>
-            3) Queda guardado automáticamente (localStorage).
-          </div>
-
-          <div class="calib__row mt12">
-            <button class="btn btn--ghost btn--sm" type="button" data-assign="hotspot-ale">Asignar → Alerón</button>
-            <button class="btn btn--ghost btn--sm" type="button" data-assign="hotspot-frontlip">Asignar → Front lip</button>
-            <button class="btn btn--ghost btn--sm" type="button" data-assign="hotspot-guard">Asignar → Guardabarros</button>
-            <button class="btn btn--ghost btn--sm" type="button" data-assign="hotspot-side">Asignar → Lip lateral</button>
-          </div>
-
-          <div class="calib__row mt10">
-            <button class="btn btn--ghost btn--sm" type="button" data-calib-reset>Reset calibración</button>
-          </div>
-
-          <div class="field mt12">
-            <label class="label" for="calibOut">Último hit (copiable)</label>
-            <textarea id="calibOut" class="textarea" rows="3" readonly></textarea>
-          </div>
-        </details>
       </div>
     </div>
   </div>
@@ -138,25 +54,16 @@
       <a class="link" href="/catalog">Ver todo →</a>
     </div>
 
-    <div class="grid grid--3">
-      {% for p in featured %}
-      <a class="card card--hover" href="/p/{{ p.slug }}">
-        <div class="card__thumb" style="background-image:url('{{ (p.images[0] if p.images and p.images|length > 0 else '/static/img/hero.jpg') }}')"></div>
-        <div class="card__body">
-          <div class="card__top">
-            <span class="chip">{{ p.category }}</span>
-            <span class="chip chip--accent">{{ p.price_label }}</span>
-          </div>
-          <div class="card__title">{{ p.name }}</div>
-          <div class="muted">{{ p.short_desc }}</div>
-          <div class="card__bottom">
-            <span class="chip">{{ p.license }}</span>
-            <span class="link small">Ver producto →</span>
-          </div>
-        </div>
-      </a>
-      {% endfor %}
+    <!-- SAFE: solo texto mientras identificamos el bug -->
+    <div class="card card--padded">
+      <div class="muted">
+        Estamos ajustando el home. Mientras tanto, entrá al catálogo para ver productos.
+      </div>
+      <div class="mt12">
+        <a class="btn btn--primary" href="/catalog">Ir al catálogo</a>
+      </div>
     </div>
   </div>
 </section>
+
 {% endblock %}

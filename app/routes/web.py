@@ -1,4 +1,5 @@
 import json
+import traceback
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -8,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 
 router = APIRouter()
 
-# ✅ Ruta ABSOLUTA al directorio /app/app/templates (robusto en Railway/Linux)
+# Ruta absoluta robusta (Railway/Linux)
 BASE_DIR = Path(__file__).resolve().parent.parent  # .../app/app
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
@@ -89,6 +90,7 @@ def unique_categories(products: List[Dict[str, Any]]) -> List[str]:
 
 
 def render(template_name: str, request: Request, **ctx):
+    """Render seguro para Railway: imprime traceback completo y el HEAD del template."""
     try:
         return templates.TemplateResponse(template_name, {"request": request, **ctx})
     except Exception as e:
@@ -97,14 +99,14 @@ def render(template_name: str, request: Request, **ctx):
         print("Context keys:", list(ctx.keys()))
         print("Error:", repr(e))
 
-        # 👇 imprime el template real que está en Railway (primeras líneas)
+        # Imprime primeras líneas del template real en Railway
         try:
             template_path = BASE_DIR / "templates" / template_name
-            print("Template path:", template_path)
+            print("Template path:", str(template_path))
             if template_path.exists():
                 txt = template_path.read_text(encoding="utf-8", errors="replace")
-                head = "\n".join(txt.splitlines()[:60])
-                print("\n--- TEMPLATE HEAD (first 60 lines) ---")
+                head = "\n".join(txt.splitlines()[:120])  # más líneas
+                print("\n--- TEMPLATE HEAD (first 120 lines) ---")
                 print(head)
                 print("--- END TEMPLATE HEAD ---\n")
             else:
@@ -112,6 +114,10 @@ def render(template_name: str, request: Request, **ctx):
         except Exception as read_err:
             print("Could not read template file:", repr(read_err))
 
+        # Traceback completo (aquí suele salir la línea exacta del template)
+        print("\n--- TRACEBACK ---")
+        print(traceback.format_exc())
+        print("--- END TRACEBACK ---")
         print("================================\n")
         raise
 
@@ -133,7 +139,6 @@ def catalog(request: Request, q: str = "", category: str = "all"):
     products = load_products()
     categories = unique_categories(products)
     filtered = [p for p in products if product_matches(p, q=q, category=category)]
-
     return render(
         "catalog.html",
         request,
@@ -151,8 +156,6 @@ def product_detail(request: Request, slug: str):
     product = find_by_slug(products, slug)
     if not product:
         raise HTTPException(status_code=404, detail="Producto no encontrado")
-
-    # ✅ Compatibilidad: algunos templates usan `product`, otros usan `p`
     return render(
         "product.html",
         request,
@@ -175,17 +178,9 @@ def autos(request: Request):
 
 @router.get("/faq", response_class=HTMLResponse)
 def faq(request: Request):
-    return render(
-        "faq.html",
-        request,
-        page_title="FAQ — Car3D Files",
-    )
+    return render("faq.html", request, page_title="FAQ — Car3D Files")
 
 
 @router.get("/legal", response_class=HTMLResponse)
 def legal(request: Request):
-    return render(
-        "legal.html",
-        request,
-        page_title="Legal — Car3D Files",
-    )
+    return render("legal.html", request, page_title="Legal — Car3D Files")

@@ -24,20 +24,20 @@
     <div class="hero__media card card--padded">
       <div class="card__header">
         <div class="card__title">Demo Viewer 3D</div>
-        <div class="muted">Rotá, zoom y pinchá una pieza para ver productos relacionados (MVP).</div>
+        <div class="muted">Rota, acerca y selecciona una pieza para ver productos relacionados (MVP).</div>
       </div>
 
       <div class="viewer3d">
         <model-viewer
           id="carModel"
           class="mv mv--hotspots"
-          src="/static/models/sparkgt_v1.glb"
+          src="/static/models/sparkito.glb"
           camera-controls
           shadow-intensity="1"
           exposure="1"
           interaction-prompt="auto"
           ar
-          alt="Spark GT 3D"
+          alt="Sparkito 3D"
         >
           <button
             class="mv-hotspot"
@@ -88,10 +88,6 @@
           </button>
         </model-viewer>
 
-        <div class="viewer3d__hint muted small mt8">
-          • Rotar: arrastrar • Zoom: rueda / pinza •
-        </div>
-
         <div class="mt12">
           <a class="btn btn--ghost" href="/autos">busca tu auto</a>
         </div>
@@ -103,9 +99,9 @@
           <summary class="calib__summary">Calibración de hotspots (MVP)</summary>
 
           <div class="muted small mt8">
-            1) Mantené <b>ALT/SHIFT/CTRL</b> y hacé click en la parte exacta del modelo.<br>
-            2) Luego apretá “Asignar” en la pieza correspondiente.<br>
-            3) Queda guardado automáticamente (localStorage).
+            1) Mantén presionada ALT/SHIFT/CTRL y haz clic en la parte exacta del modelo.<br>
+            2) Luego presiona “Asignar” en la pieza correspondiente.<br>
+            3) Se guarda automáticamente (localStorage).
           </div>
 
           <div class="calib__row mt12">
@@ -116,11 +112,11 @@
           </div>
 
           <div class="calib__row mt10">
-            <button class="btn btn--ghost btn--sm" type="button" data-calib-reset>Reset calibración</button>
+            <button class="btn btn--ghost btn--sm" type="button" data-calib-reset>Restablecer calibración</button>
           </div>
 
           <div class="field mt12">
-            <label class="label" for="calibOut">Último hit (copiable)</label>
+            <label class="label" for="calibOut">Último punto (copiable)</label>
             <textarea id="calibOut" class="textarea" rows="3" readonly></textarea>
           </div>
         </details>

@@ -612,3 +612,35 @@ a{ color:inherit; text-decoration:none; }
   -webkit-text-fill-color: var(--red) !important;
   text-shadow: 0 0 10px rgba(255,43,43,.25), 0 0 22px rgba(255,43,43,.14);
 }
+
+/* Home: que no se vean los textos dentro del viewer */
+#carModel .mv-hotspot__label{
+  display:none;
+}
+
+/* Lista vertical de piezas */
+.part-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.part-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(34,34,34,.95);
+  background: rgba(0,0,0,.30);
+  color: var(--text);
+  font-weight: 900;
+  text-decoration: none;
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.part-item:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,43,43,.55);
+  background: rgba(255,43,43,.08);
+}

@@ -6,8 +6,7 @@
     <div class="hero__copy">
       <h1 class="hero__title">Car3D Files</h1>
       <p class="hero__subtitle">
-        Archivos listos para imprimir en 3D orientados a autos: interior,
-        exterior, soportes, detalles y upgrades.
+        Archivos listos para imprimir en 3D orientados a autos: interior, exterior, soportes, detalles y upgrades.
       </p>
 
       <div class="hero__cta">
@@ -39,6 +38,8 @@
           ar
           alt="Sparkito 3D"
         >
+          <!-- Hotspots: se mantienen para usar click directo si lo necesitas,
+               pero ocultamos el texto con CSS y dejamos solo el punto -->
           <button
             class="mv-hotspot"
             slot="hotspot-ale"
@@ -88,6 +89,15 @@
           </button>
         </model-viewer>
 
+        <!-- ✅ Lista vertical de piezas (en filas hacia abajo) -->
+        <div class="part-list mt12">
+          <a class="part-item" href="/catalog?q=aleron">Alerón</a>
+          <a class="part-item" href="/catalog?q=front%20lip">Front lip</a>
+          <a class="part-item" href="/catalog?q=guardabarros">Guardabarros</a>
+          <a class="part-item" href="/catalog?q=lip%20lateral">Lip lateral</a>
+        </div>
+
+        <!-- Botón -->
         <div class="mt12">
           <a class="btn btn--ghost" href="/autos">busca tu auto</a>
         </div>

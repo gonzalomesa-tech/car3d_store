@@ -88,18 +88,30 @@ def unique_categories(products: List[Dict[str, Any]]) -> List[str]:
     return cats
 
 
-# ✅ Wrapper de render para que Railway nos diga EXACTAMENTE qué template revienta
 def render(template_name: str, request: Request, **ctx):
     try:
-        return templates.TemplateResponse(
-            template_name,
-            {"request": request, **ctx},
-        )
+        return templates.TemplateResponse(template_name, {"request": request, **ctx})
     except Exception as e:
         print("\n==== TEMPLATE RENDER ERROR ====")
         print("Template:", template_name)
         print("Context keys:", list(ctx.keys()))
         print("Error:", repr(e))
+
+        # 👇 imprime el template real que está en Railway (primeras líneas)
+        try:
+            template_path = BASE_DIR / "templates" / template_name
+            print("Template path:", template_path)
+            if template_path.exists():
+                txt = template_path.read_text(encoding="utf-8", errors="replace")
+                head = "\n".join(txt.splitlines()[:60])
+                print("\n--- TEMPLATE HEAD (first 60 lines) ---")
+                print(head)
+                print("--- END TEMPLATE HEAD ---\n")
+            else:
+                print("Template file NOT FOUND on disk.")
+        except Exception as read_err:
+            print("Could not read template file:", repr(read_err))
+
         print("================================\n")
         raise
 

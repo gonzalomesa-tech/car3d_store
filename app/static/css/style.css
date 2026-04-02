@@ -644,3 +644,8 @@ a{ color:inherit; text-decoration:none; }
   border-color: rgba(255,43,43,.55);
   background: rgba(255,43,43,.08);
 }
+
+/* HOME: ocultar hotspots dentro del viewer (evita que aparezcan en el centro del modelo) */
+#carModel .mv-hotspot{
+  display: none !important;
+}

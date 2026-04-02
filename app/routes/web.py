@@ -1,5 +1,4 @@
 import json
-import traceback
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -9,6 +8,7 @@ from fastapi.templating import Jinja2Templates
 
 router = APIRouter()
 
+# Ruta absoluta robusta (Railway/Linux)
 BASE_DIR = Path(__file__).resolve().parent.parent  # .../app/app
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
@@ -88,37 +88,23 @@ def unique_categories(products: List[Dict[str, Any]]) -> List[str]:
     return cats
 
 
-def render(*, request: Request, template_name: str, **ctx):
+def render_html(template_name: str, request: Request, **ctx) -> HTMLResponse:
     """
-    Render ultra robusto:
-    - template_name keyword-only (evita corrimientos de args)
-    - carga template como objeto (evita env.get_template(name) con name mal pasado)
+    Render robusto (evita starlette.templating.TemplateResponse cache bug).
+    Renderiza con Jinja y devuelve HTMLResponse.
     """
-    try:
-        template = templates.env.get_template(template_name)  # fuerza string correcto
-        return templates.TemplateResponse(
-            template,  # <- pasamos Template object, no nombre
-            {"request": request, **ctx},
-        )
-    except Exception as e:
-        print("\n==== TEMPLATE RENDER ERROR (ROBUST) ====")
-        print("Template:", template_name, "type:", type(template_name))
-        print("Context keys:", list(ctx.keys()))
-        print("Error:", repr(e))
-        print("--- TRACEBACK ---")
-        print(traceback.format_exc())
-        print("--- END TRACEBACK ---")
-        print("=======================================\n")
-        raise
+    template = templates.env.get_template(template_name)
+    html = template.render(request=request, **ctx)
+    return HTMLResponse(html)
 
 
 @router.get("/", response_class=HTMLResponse)
 def home(request: Request):
     products = load_products()
     featured = products[:6]
-    return render(
-        request=request,
-        template_name="home.html",
+    return render_html(
+        "home.html",
+        request,
         featured=featured,
         page_title="Car3D Files — Archivos 3D para autos",
     )
@@ -129,9 +115,10 @@ def catalog(request: Request, q: str = "", category: str = "all"):
     products = load_products()
     categories = unique_categories(products)
     filtered = [p for p in products if product_matches(p, q=q, category=category)]
-    return render(
-        request=request,
-        template_name="catalog.html",
+
+    return render_html(
+        "catalog.html",
+        request,
         products=filtered,
         q=q,
         category=category,
@@ -147,9 +134,9 @@ def product_detail(request: Request, slug: str):
     if not product:
         raise HTTPException(status_code=404, detail="Producto no encontrado")
 
-    return render(
-        request=request,
-        template_name="product.html",
+    return render_html(
+        "product.html",
+        request,
         product=product,
         p=product,
         page_title=f"{product.get('name', 'Producto')} — Car3D Files",
@@ -159,9 +146,9 @@ def product_detail(request: Request, slug: str):
 @router.get("/autos", response_class=HTMLResponse)
 def autos(request: Request):
     cars = load_cars()
-    return render(
-        request=request,
-        template_name="autos.html",
+    return render_html(
+        "autos.html",
+        request,
         cars=cars,
         page_title="Autos — Car3D Files",
     )
@@ -169,9 +156,17 @@ def autos(request: Request):
 
 @router.get("/faq", response_class=HTMLResponse)
 def faq(request: Request):
-    return render(request=request, template_name="faq.html", page_title="FAQ — Car3D Files")
+    return render_html(
+        "faq.html",
+        request,
+        page_title="FAQ — Car3D Files",
+    )
 
 
 @router.get("/legal", response_class=HTMLResponse)
 def legal(request: Request):
-    return render(request=request, template_name="legal.html", page_title="Legal — Car3D Files")
+    return render_html(
+        "legal.html",
+        request,
+        page_title="Legal — Car3D Files",
+    )

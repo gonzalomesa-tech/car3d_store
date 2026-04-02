@@ -88,17 +88,31 @@ def unique_categories(products: List[Dict[str, Any]]) -> List[str]:
     return cats
 
 
+# ✅ Wrapper de render para que Railway nos diga EXACTAMENTE qué template revienta
+def render(template_name: str, request: Request, **ctx):
+    try:
+        return templates.TemplateResponse(
+            template_name,
+            {"request": request, **ctx},
+        )
+    except Exception as e:
+        print("\n==== TEMPLATE RENDER ERROR ====")
+        print("Template:", template_name)
+        print("Context keys:", list(ctx.keys()))
+        print("Error:", repr(e))
+        print("================================\n")
+        raise
+
+
 @router.get("/", response_class=HTMLResponse)
 def home(request: Request):
     products = load_products()
     featured = products[:6]
-    return templates.TemplateResponse(
+    return render(
         "home.html",
-        {
-            "request": request,
-            "featured": featured,
-            "page_title": "Car3D Files — Archivos 3D para autos",
-        },
+        request,
+        featured=featured,
+        page_title="Car3D Files — Archivos 3D para autos",
     )
 
 
@@ -108,16 +122,14 @@ def catalog(request: Request, q: str = "", category: str = "all"):
     categories = unique_categories(products)
     filtered = [p for p in products if product_matches(p, q=q, category=category)]
 
-    return templates.TemplateResponse(
+    return render(
         "catalog.html",
-        {
-            "request": request,
-            "products": filtered,
-            "q": q,
-            "category": category,
-            "categories": categories,
-            "page_title": "Catálogo — Car3D Files",
-        },
+        request,
+        products=filtered,
+        q=q,
+        category=category,
+        categories=categories,
+        page_title="Catálogo — Car3D Files",
     )
 
 
@@ -129,41 +141,39 @@ def product_detail(request: Request, slug: str):
         raise HTTPException(status_code=404, detail="Producto no encontrado")
 
     # ✅ Compatibilidad: algunos templates usan `product`, otros usan `p`
-    return templates.TemplateResponse(
+    return render(
         "product.html",
-        {
-            "request": request,
-            "product": product,
-            "p": product,
-            "page_title": f"{product.get('name', 'Producto')} — Car3D Files",
-        },
+        request,
+        product=product,
+        p=product,
+        page_title=f"{product.get('name', 'Producto')} — Car3D Files",
     )
 
 
 @router.get("/autos", response_class=HTMLResponse)
 def autos(request: Request):
     cars = load_cars()
-    return templates.TemplateResponse(
+    return render(
         "autos.html",
-        {
-            "request": request,
-            "cars": cars,
-            "page_title": "Autos — Car3D Files",
-        },
+        request,
+        cars=cars,
+        page_title="Autos — Car3D Files",
     )
 
 
 @router.get("/faq", response_class=HTMLResponse)
 def faq(request: Request):
-    return templates.TemplateResponse(
+    return render(
         "faq.html",
-        {"request": request, "page_title": "FAQ — Car3D Files"},
+        request,
+        page_title="FAQ — Car3D Files",
     )
 
 
 @router.get("/legal", response_class=HTMLResponse)
 def legal(request: Request):
-    return templates.TemplateResponse(
+    return render(
         "legal.html",
-        {"request": request, "page_title": "Legal — Car3D Files"},
+        request,
+        page_title="Legal — Car3D Files",
     )

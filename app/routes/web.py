@@ -6,12 +6,14 @@ from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-
 router = APIRouter()
-templates = Jinja2Templates(directory="app/templates")
 
-PRODUCTS_PATH = Path("app/data/products.json")
-CARS_PATH = Path("app/data/cars.json")
+# ✅ Ruta ABSOLUTA al directorio /app/app/templates (robusto en Railway/Linux)
+BASE_DIR = Path(__file__).resolve().parent.parent  # .../app/app
+templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
+
+PRODUCTS_PATH = BASE_DIR / "data" / "products.json"
+CARS_PATH = BASE_DIR / "data" / "cars.json"
 
 
 def load_json(path: Path) -> Any:
@@ -76,7 +78,7 @@ def product_matches(p: Dict[str, Any], q: str, category: str) -> bool:
 
 
 def unique_categories(products: List[Dict[str, Any]]) -> List[str]:
-    cats = []
+    cats: List[str] = []
     seen = set()
     for p in products:
         c = (p.get("category") or "").strip()
@@ -92,7 +94,11 @@ def home(request: Request):
     featured = products[:6]
     return templates.TemplateResponse(
         "home.html",
-        {"request": request, "featured": featured, "page_title": "Car3D Files — Archivos 3D para autos"},
+        {
+            "request": request,
+            "featured": featured,
+            "page_title": "Car3D Files — Archivos 3D para autos",
+        },
     )
 
 
@@ -122,9 +128,15 @@ def product_detail(request: Request, slug: str):
     if not product:
         raise HTTPException(status_code=404, detail="Producto no encontrado")
 
+    # ✅ Compatibilidad: algunos templates usan `product`, otros usan `p`
     return templates.TemplateResponse(
         "product.html",
-        {"request": request, "product": product, "page_title": f"{product.get('name','Producto')} — Car3D Files"},
+        {
+            "request": request,
+            "product": product,
+            "p": product,
+            "page_title": f"{product.get('name', 'Producto')} — Car3D Files",
+        },
     )
 
 
@@ -133,15 +145,25 @@ def autos(request: Request):
     cars = load_cars()
     return templates.TemplateResponse(
         "autos.html",
-        {"request": request, "cars": cars, "page_title": "Autos — Car3D Files"},
+        {
+            "request": request,
+            "cars": cars,
+            "page_title": "Autos — Car3D Files",
+        },
     )
 
 
 @router.get("/faq", response_class=HTMLResponse)
 def faq(request: Request):
-    return templates.TemplateResponse("faq.html", {"request": request, "page_title": "FAQ — Car3D Files"})
+    return templates.TemplateResponse(
+        "faq.html",
+        {"request": request, "page_title": "FAQ — Car3D Files"},
+    )
 
 
 @router.get("/legal", response_class=HTMLResponse)
 def legal(request: Request):
-    return templates.TemplateResponse("legal.html", {"request": request, "page_title": "Legal — Car3D Files"})
+    return templates.TemplateResponse(
+        "legal.html",
+        {"request": request, "page_title": "Legal — Car3D Files"},
+    )

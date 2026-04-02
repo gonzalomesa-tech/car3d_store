@@ -9,7 +9,6 @@ from fastapi.templating import Jinja2Templates
 
 router = APIRouter()
 
-# Ruta absoluta robusta (Railway/Linux)
 BASE_DIR = Path(__file__).resolve().parent.parent  # .../app/app
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
@@ -89,36 +88,27 @@ def unique_categories(products: List[Dict[str, Any]]) -> List[str]:
     return cats
 
 
-def render(template_name: str, request: Request, **ctx):
-    """Render seguro para Railway: imprime traceback completo y el HEAD del template."""
+def render(*, request: Request, template_name: str, **ctx):
+    """
+    Render ultra robusto:
+    - template_name keyword-only (evita corrimientos de args)
+    - carga template como objeto (evita env.get_template(name) con name mal pasado)
+    """
     try:
-        return templates.TemplateResponse(template_name, {"request": request, **ctx})
+        template = templates.env.get_template(template_name)  # fuerza string correcto
+        return templates.TemplateResponse(
+            template,  # <- pasamos Template object, no nombre
+            {"request": request, **ctx},
+        )
     except Exception as e:
-        print("\n==== TEMPLATE RENDER ERROR ====")
-        print("Template:", template_name)
+        print("\n==== TEMPLATE RENDER ERROR (ROBUST) ====")
+        print("Template:", template_name, "type:", type(template_name))
         print("Context keys:", list(ctx.keys()))
         print("Error:", repr(e))
-
-        # Imprime primeras líneas del template real en Railway
-        try:
-            template_path = BASE_DIR / "templates" / template_name
-            print("Template path:", str(template_path))
-            if template_path.exists():
-                txt = template_path.read_text(encoding="utf-8", errors="replace")
-                head = "\n".join(txt.splitlines()[:120])  # más líneas
-                print("\n--- TEMPLATE HEAD (first 120 lines) ---")
-                print(head)
-                print("--- END TEMPLATE HEAD ---\n")
-            else:
-                print("Template file NOT FOUND on disk.")
-        except Exception as read_err:
-            print("Could not read template file:", repr(read_err))
-
-        # Traceback completo (aquí suele salir la línea exacta del template)
-        print("\n--- TRACEBACK ---")
+        print("--- TRACEBACK ---")
         print(traceback.format_exc())
         print("--- END TRACEBACK ---")
-        print("================================\n")
+        print("=======================================\n")
         raise
 
 
@@ -127,8 +117,8 @@ def home(request: Request):
     products = load_products()
     featured = products[:6]
     return render(
-        "home.html",
-        request,
+        request=request,
+        template_name="home.html",
         featured=featured,
         page_title="Car3D Files — Archivos 3D para autos",
     )
@@ -140,8 +130,8 @@ def catalog(request: Request, q: str = "", category: str = "all"):
     categories = unique_categories(products)
     filtered = [p for p in products if product_matches(p, q=q, category=category)]
     return render(
-        "catalog.html",
-        request,
+        request=request,
+        template_name="catalog.html",
         products=filtered,
         q=q,
         category=category,
@@ -156,9 +146,10 @@ def product_detail(request: Request, slug: str):
     product = find_by_slug(products, slug)
     if not product:
         raise HTTPException(status_code=404, detail="Producto no encontrado")
+
     return render(
-        "product.html",
-        request,
+        request=request,
+        template_name="product.html",
         product=product,
         p=product,
         page_title=f"{product.get('name', 'Producto')} — Car3D Files",
@@ -169,8 +160,8 @@ def product_detail(request: Request, slug: str):
 def autos(request: Request):
     cars = load_cars()
     return render(
-        "autos.html",
-        request,
+        request=request,
+        template_name="autos.html",
         cars=cars,
         page_title="Autos — Car3D Files",
     )
@@ -178,9 +169,9 @@ def autos(request: Request):
 
 @router.get("/faq", response_class=HTMLResponse)
 def faq(request: Request):
-    return render("faq.html", request, page_title="FAQ — Car3D Files")
+    return render(request=request, template_name="faq.html", page_title="FAQ — Car3D Files")
 
 
 @router.get("/legal", response_class=HTMLResponse)
 def legal(request: Request):
-    return render("legal.html", request, page_title="Legal — Car3D Files")
+    return render(request=request, template_name="legal.html", page_title="Legal — Car3D Files")

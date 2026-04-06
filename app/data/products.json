@@ -2,7 +2,7 @@
   "products": [
     {
       "id": "p000",
-      "name": "S3 Cut Paddles",
+      "name": "Universal Cut Paddles",
       "slug": "s3-cut-paddles",
       "category": "Interior",
       "tags": [
@@ -12,8 +12,8 @@
         "interior",
         "chevrolet"
       ],
-      "short_desc": "Primer lanzamiento oficial: paddles impresos 3D con foto real instalada y preview 3D del archivo.",
-      "long_desc": "Set digital S3 Cut Paddles para impresión 3D, pensado para dar un look más deportivo al volante mostrado en la foto. La página incluye preview 3D y foto real de referencia para que el cliente vea mejor el resultado final antes de pagar.",
+      "short_desc": "Paddles impresos 3D con foto real instalada y preview 3D del archivo.",
+      "long_desc": "Set digital Universal Cut Paddles para impresión 3D, pensado para dar un look más deportivo al volante mostrado en la foto.",
       "price_label": "US$ 6,99",
       "hotmart_url": "https://pay.hotmart.com/K105244959J",
       "preview_glb": "/static/models/s3-cut-paddles.glb",
@@ -33,8 +33,8 @@
       },
       "license": "Uso personal",
       "delivery_format": "Archivo STL digital entregado por Hotmart después del pago.",
-      "payment_note": "Checkout Hotmart con tarjeta de crédito o débito. Reemplaza la URL placeholder por tu link real antes de publicar.",
-      "compatibility_note": "Verifica visualmente la compatibilidad con tu volante antes de comprar. La foto publicada corresponde al producto instalado."
+      "payment_note": "Checkout Hotmart con tarjeta de crédito o débito.",
+      "compatibility_note": "Tamaño pensado para la mayoria de los volantes, también puedes darle tamaño al STL dependiendo de tu volante o el tamaño que quieras.s"
     },
     {
       "id": "p001",

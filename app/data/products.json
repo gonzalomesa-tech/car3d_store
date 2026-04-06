@@ -1,40 +1,97 @@
 {
   "products": [
     {
+      "id": "p000",
+      "name": "S3 Cut Paddles",
+      "slug": "s3-cut-paddles",
+      "category": "Interior",
+      "tags": [
+        "paddles",
+        "shifter",
+        "volante",
+        "interior",
+        "chevrolet"
+      ],
+      "short_desc": "Primer lanzamiento oficial: paddles impresos 3D con foto real instalada y preview 3D del archivo.",
+      "long_desc": "Set digital S3 Cut Paddles para impresión 3D, pensado para dar un look más deportivo al volante mostrado en la foto. La página incluye preview 3D y foto real de referencia para que el cliente vea mejor el resultado final antes de pagar.",
+      "price_label": "US$ 6,99",
+      "hotmart_url": "https://pay.hotmart.com/K105244959J",
+      "preview_glb": "/static/models/s3-cut-paddles.glb",
+      "images": [
+        "/static/img/s3-cut-paddles-preview.jpg"
+      ],
+      "materials": [
+        "PETG",
+        "ABS",
+        "ASA"
+      ],
+      "print_settings": {
+        "layer_height": "0.20mm",
+        "infill": "35–45%",
+        "supports": "Sí (según orientación)",
+        "nozzle": "0.4mm"
+      },
+      "license": "Uso personal",
+      "delivery_format": "Archivo STL digital entregado por Hotmart después del pago.",
+      "payment_note": "Checkout Hotmart con tarjeta de crédito o débito. Reemplaza la URL placeholder por tu link real antes de publicar.",
+      "compatibility_note": "Verifica visualmente la compatibilidad con tu volante antes de comprar. La foto publicada corresponde al producto instalado."
+    },
+    {
       "id": "p001",
       "name": "Soporte Gauge Pod 52mm — Universal",
       "slug": "soporte-gauge-pod-52mm-universal",
       "category": "Interior",
-      "tags": ["gauge", "pod", "52mm", "interior", "tuning"],
+      "tags": [
+        "gauge",
+        "pod",
+        "52mm",
+        "interior",
+        "tuning"
+      ],
       "short_desc": "Soporte para reloj 52mm con look motorsport, listo para imprimir y montar.",
       "long_desc": "Un gauge pod universal para relojes de 52mm pensado para interiores deportivos. Incluye tolerancias pensadas para post-proceso (lijado/pintura) y una base sólida para fijación con cinta 3M o tornillería. Ideal para presión de turbo, AFR, temperatura de aceite, etc.",
       "price_label": "US$ 9,99",
       "hotmart_url": "https://pay.hotmart.com/XXXXXX",
       "preview_glb": "/static/models/demo.glb",
-      "images": ["/static/img/hero.jpg"],
-      "materials": ["PETG", "ABS/ASA", "PLA+ (bajo calor)"],
+      "images": [
+        "/static/img/hero.jpg"
+      ],
+      "materials": [
+        "PETG",
+        "ABS/ASA",
+        "PLA+ (bajo calor)"
+      ],
       "print_settings": {
         "layer_height": "0.20mm",
         "infill": "20–30%",
         "supports": "Sí (solo en overhangs)",
         "nozzle": "0.4mm"
       },
-      "license": "Pronto"
+      "license": "Uso personal (no reventa)"
     },
-
     {
       "id": "p002",
       "name": "Alerón GT — Spark (Concept)",
       "slug": "aleron-gt-spark-concept",
       "category": "Exterior",
-      "tags": ["aleron", "spoiler", "gt", "exterior", "aero"],
+      "tags": [
+        "aleron",
+        "spoiler",
+        "gt",
+        "exterior",
+        "aero"
+      ],
       "short_desc": "Alerón estilo GT (placeholder) para futuras versiones y ajustes por modelo.",
       "long_desc": "Producto placeholder para el MVP. En la próxima etapa agregamos variantes, soportes, tornillería y preview 3D real.",
       "price_label": "US$ 30,99",
       "hotmart_url": "https://pay.hotmart.com/XXXXXX",
       "preview_glb": "/static/models/demo.glb",
-      "images": ["/static/img/hero.jpg"],
-      "materials": ["PETG/ABS/ASA"],
+      "images": [
+        "/static/img/hero.jpg"
+      ],
+      "materials": [
+        "PETG/ABS/ASA"
+      ],
       "print_settings": {
         "layer_height": "0.20mm",
         "infill": "30–40%",
@@ -48,14 +105,24 @@
       "name": "Front Lip — Spark (Concept)",
       "slug": "front-lip-spark-concept",
       "category": "Exterior",
-      "tags": ["front lip", "lip", "splitter", "exterior", "aero"],
+      "tags": [
+        "front lip",
+        "lip",
+        "splitter",
+        "exterior",
+        "aero"
+      ],
       "short_desc": "Front lip / splitter (placeholder). Ideal para estética y look racing.",
       "long_desc": "Producto placeholder para el MVP. Después sumamos versiones por paragolpes, montaje y tolerancias.",
       "price_label": "US$ 24,99",
-      "hotmart_url": "htts://pay.hotmart.com/XXXXXX",
+      "hotmart_url": "https://pay.hotmart.com/XXXXXX",
       "preview_glb": "/static/models/demo.glb",
-      "images": ["/static/img/hero.jpg"],
-      "materials": ["PETG/ABS/ASA"],
+      "images": [
+        "/static/img/hero.jpg"
+      ],
+      "materials": [
+        "PETG/ABS/ASA"
+      ],
       "print_settings": {
         "layer_height": "0.20mm",
         "infill": "25–35%",
@@ -69,14 +136,25 @@
       "name": "Guardabarros Wide — Spark (Concept)",
       "slug": "guardabarros-wide-spark-concept",
       "category": "Exterior",
-      "tags": ["guardabarros", "wide", "fender", "overfender", "exterior"],
+      "tags": [
+        "guardabarros",
+        "wide",
+        "fender",
+        "overfender",
+        "exterior"
+      ],
       "short_desc": "Overfender / guardabarros ancho (placeholder) para look widebody.",
       "long_desc": "Producto placeholder para el MVP. Más adelante agregamos medidas exactas, encastres y preview 3D.",
       "price_label": "US$ 14,99",
       "hotmart_url": "https://pay.hotmart.com/XXXXXX",
       "preview_glb": "/static/models/demo.glb",
-      "images": ["/static/img/hero.jpg"],
-      "materials": ["ABS/ASA (recomendado)", "PETG"],
+      "images": [
+        "/static/img/hero.jpg"
+      ],
+      "materials": [
+        "ABS/ASA (recomendado)",
+        "PETG"
+      ],
       "print_settings": {
         "layer_height": "0.24mm",
         "infill": "20–30%",
@@ -90,14 +168,23 @@
       "name": "Lip lateral — Spark (Concept)",
       "slug": "lip-lateral-spark-concept",
       "category": "Exterior",
-      "tags": ["lip lateral", "side skirt", "skirts", "exterior"],
+      "tags": [
+        "lip lateral",
+        "side skirt",
+        "skirts",
+        "exterior"
+      ],
       "short_desc": "Lips laterales (placeholder) para completar el kit aero.",
       "long_desc": "Producto placeholder para el MVP. Luego sumamos kit completo, variantes y visualización 3D.",
       "price_label": "US$ 14,99",
       "hotmart_url": "https://pay.hotmart.com/XXXXXX",
       "preview_glb": "/static/models/demo.glb",
-      "images": ["/static/img/hero.jpg"],
-      "materials": ["PETG/ABS/ASA"],
+      "images": [
+        "/static/img/hero.jpg"
+      ],
+      "materials": [
+        "PETG/ABS/ASA"
+      ],
       "print_settings": {
         "layer_height": "0.20mm",
         "infill": "20–30%",

@@ -8,7 +8,7 @@
       "tags": ["gauge", "pod", "52mm", "interior", "tuning"],
       "short_desc": "Soporte para reloj 52mm con look motorsport, listo para imprimir y montar.",
       "long_desc": "Un gauge pod universal para relojes de 52mm pensado para interiores deportivos. Incluye tolerancias pensadas para post-proceso (lijado/pintura) y una base sólida para fijación con cinta 3M o tornillería. Ideal para presión de turbo, AFR, temperatura de aceite, etc.",
-      "price_label": "R$ 29,90",
+      "price_label": "US$ 9,99",
       "hotmart_url": "https://pay.hotmart.com/XXXXXX",
       "preview_glb": "/static/models/demo.glb",
       "images": ["/static/img/hero.jpg"],
@@ -19,7 +19,7 @@
         "supports": "Sí (solo en overhangs)",
         "nozzle": "0.4mm"
       },
-      "license": "Uso personal (no reventa)"
+      "license": "Pronto"
     },
 
     {
@@ -30,7 +30,7 @@
       "tags": ["aleron", "spoiler", "gt", "exterior", "aero"],
       "short_desc": "Alerón estilo GT (placeholder) para futuras versiones y ajustes por modelo.",
       "long_desc": "Producto placeholder para el MVP. En la próxima etapa agregamos variantes, soportes, tornillería y preview 3D real.",
-      "price_label": "R$ 49,90",
+      "price_label": "US$ 30,99",
       "hotmart_url": "https://pay.hotmart.com/XXXXXX",
       "preview_glb": "/static/models/demo.glb",
       "images": ["/static/img/hero.jpg"],
@@ -41,7 +41,7 @@
         "supports": "Sí",
         "nozzle": "0.4mm"
       },
-      "license": "Uso personal (no reventa)"
+      "license": "Pronto"
     },
     {
       "id": "p003",
@@ -51,8 +51,8 @@
       "tags": ["front lip", "lip", "splitter", "exterior", "aero"],
       "short_desc": "Front lip / splitter (placeholder). Ideal para estética y look racing.",
       "long_desc": "Producto placeholder para el MVP. Después sumamos versiones por paragolpes, montaje y tolerancias.",
-      "price_label": "R$ 39,90",
-      "hotmart_url": "https://pay.hotmart.com/XXXXXX",
+      "price_label": "US$ 24,99",
+      "hotmart_url": "htts://pay.hotmart.com/XXXXXX",
       "preview_glb": "/static/models/demo.glb",
       "images": ["/static/img/hero.jpg"],
       "materials": ["PETG/ABS/ASA"],
@@ -62,7 +62,7 @@
         "supports": "Sí (si aplica)",
         "nozzle": "0.4mm"
       },
-      "license": "Uso personal (no reventa)"
+      "license": "Pronto"
     },
     {
       "id": "p004",
@@ -72,7 +72,7 @@
       "tags": ["guardabarros", "wide", "fender", "overfender", "exterior"],
       "short_desc": "Overfender / guardabarros ancho (placeholder) para look widebody.",
       "long_desc": "Producto placeholder para el MVP. Más adelante agregamos medidas exactas, encastres y preview 3D.",
-      "price_label": "R$ 59,90",
+      "price_label": "US$ 14,99",
       "hotmart_url": "https://pay.hotmart.com/XXXXXX",
       "preview_glb": "/static/models/demo.glb",
       "images": ["/static/img/hero.jpg"],
@@ -83,7 +83,7 @@
         "supports": "Sí",
         "nozzle": "0.4mm"
       },
-      "license": "Uso personal (no reventa)"
+      "license": "Pronto"
     },
     {
       "id": "p005",
@@ -93,7 +93,7 @@
       "tags": ["lip lateral", "side skirt", "skirts", "exterior"],
       "short_desc": "Lips laterales (placeholder) para completar el kit aero.",
       "long_desc": "Producto placeholder para el MVP. Luego sumamos kit completo, variantes y visualización 3D.",
-      "price_label": "R$ 44,90",
+      "price_label": "US$ 14,99",
       "hotmart_url": "https://pay.hotmart.com/XXXXXX",
       "preview_glb": "/static/models/demo.glb",
       "images": ["/static/img/hero.jpg"],
@@ -104,7 +104,7 @@
         "supports": "Depende orientación",
         "nozzle": "0.4mm"
       },
-      "license": "Uso personal (no reventa)"
+      "license": "Pronto"
     }
   ]
 }

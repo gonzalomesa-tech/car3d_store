@@ -21,7 +21,33 @@
 
           <div class="muted mt8">{{ product.short_desc }}</div>
 
-          {% if product.preview_glb %}
+          {% if product.model_parts and product.model_parts|length > 0 %}
+          <div class="product__sectionHead mt16">
+            <div class="card__title">Vista 3D de los archivos incluidos</div>
+            <div class="muted small">Cada visor corresponde a una pieza del pack.</div>
+          </div>
+
+          <div class="part-grid mt12">
+            {% for part in product.model_parts %}
+            <div class="part-card">
+              <div class="card__title">{{ part.label }}</div>
+              {% if part.note %}
+              <div class="muted small mt8">{{ part.note }}</div>
+              {% endif %}
+              <model-viewer
+                class="mv part-card__viewer mt12"
+                src="{{ part.glb }}"
+                camera-controls
+                auto-rotate
+                shadow-intensity="1"
+                exposure="1"
+                ar
+                alt="{{ product.name }} - {{ part.label }}"
+              ></model-viewer>
+            </div>
+            {% endfor %}
+          </div>
+          {% elif product.preview_glb %}
           <div class="product__viewer mt16">
             <model-viewer
               class="mv mv--product"
@@ -38,17 +64,30 @@
 
           {% if product.images and product.images|length > 0 %}
           <div class="product__photoCard mt16">
-            <div class="card__title">Foto real del producto</div>
+            <div class="card__title">Foto real / referencia visual</div>
             <img class="product__photoImg mt12" src="{{ product.images[0] }}" alt="{{ product.name }}">
-            <div class="muted small mt8">Referencia visual del producto instalado.</div>
+            <div class="muted small mt8">{{ product.compatibility_note or "Referencia visual del producto." }}</div>
           </div>
           {% endif %}
 
           <div class="product__actions mt16">
-            <a class="btn btn--primary" href="{{ product.hotmart_url }}" target="_blank" rel="noopener noreferrer">
+            {% if product.digital_checkout_url or product.hotmart_url %}
+            <a class="btn btn--primary" href="{{ product.digital_checkout_url or product.hotmart_url }}" target="_blank" rel="noopener noreferrer">
+              {% if product.digital_price_label %}
+              Comprar archivos ({{ product.digital_price_label }})
+              {% else %}
               Comprar con tarjeta
+              {% endif %}
             </a>
+            {% endif %}
+
+            {% if product.printed_request_url %}
+            <a class="btn btn--ghost" href="{{ product.printed_request_url }}" target="_blank" rel="noopener noreferrer">
+              Pedir producto impreso{% if product.printed_price_label %} ({{ product.printed_price_label }}){% endif %}
+            </a>
+            {% else %}
             <a class="btn btn--ghost" href="/faq">Dudas / FAQ</a>
+            {% endif %}
           </div>
 
           <hr class="hr mt16" />
@@ -57,20 +96,24 @@
             <h2>Descripción</h2>
             <p>{{ product.long_desc }}</p>
 
-            {% if product.compatibility_note %}
-            <h3>Compatibilidad</h3>
-            <p>{{ product.compatibility_note }}</p>
+            {% if product.delivery_contents and product.delivery_contents|length > 0 %}
+            <h3>Qué recibe el cliente</h3>
+            <ul>
+              {% for item in product.delivery_contents %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
             {% endif %}
 
             {% if product.delivery_format %}
-            <h3>Entrega</h3>
+            <h3>Formato de entrega</h3>
             <p>{{ product.delivery_format }}</p>
             {% endif %}
 
             <h3>Material recomendado</h3>
             <ul>
               {% for m in product.materials %}
-                <li>{{ m }}</li>
+              <li>{{ m }}</li>
               {% endfor %}
             </ul>
 
@@ -103,26 +146,48 @@
 
       <aside class="product__right">
         <div class="card card--padded card--sticky">
-          <div class="card__title">Compra rápida</div>
+          <div class="card__title">Opciones de compra</div>
           <div class="muted mt8">Checkout externo y entrega digital post-pago.</div>
 
-          <div class="price mt16">
-            <span class="price__value">{{ product.price_label }}</span>
-            <span class="chip">{{ product.license }}</span>
+          <div class="option-list mt16">
+            {% if product.digital_checkout_url or product.hotmart_url %}
+            <div class="option-item">
+              <div>
+                <div class="option-item__title">Archivos digitales</div>
+                <div class="muted small">Entrega ZIP con STL después del pago.</div>
+              </div>
+              <div class="option-item__price">{{ product.digital_price_label or product.price_label }}</div>
+            </div>
+
+            <a class="btn btn--primary mt12" href="{{ product.digital_checkout_url or product.hotmart_url }}" target="_blank" rel="noopener noreferrer">
+              Comprar archivos
+            </a>
+            {% endif %}
+
+            {% if product.printed_request_url %}
+            <div class="option-item mt16">
+              <div>
+                <div class="option-item__title">Producto impreso</div>
+                <div class="muted small">Botón placeholder para pedido manual.</div>
+              </div>
+              <div class="option-item__price">{{ product.printed_price_label }}</div>
+            </div>
+
+            <a class="btn btn--ghost mt12" href="{{ product.printed_request_url }}" target="_blank" rel="noopener noreferrer">
+              Pedir producto impreso
+            </a>
+            {% endif %}
           </div>
-
-          <a class="btn btn--primary mt16" href="{{ product.hotmart_url }}" target="_blank" rel="noopener noreferrer">
-            Comprar ahora
-          </a>
-
-          <a class="btn btn--ghost mt10" href="/catalog">Seguir mirando</a>
 
           <hr class="hr mt16" />
 
           <div class="product__miniList">
             <div class="product__miniItem"><strong>Formato:</strong> {{ product.delivery_format or "Archivo digital" }}</div>
             <div class="product__miniItem"><strong>Uso:</strong> {{ product.license }}</div>
-            <div class="product__miniItem"><strong>Pago:</strong> vía Hotmart</div>
+            <div class="product__miniItem"><strong>Piezas:</strong> {{ product.delivery_contents|length if product.delivery_contents else "1" }} archivo(s)</div>
+            {% if product.model_parts and product.model_parts|length > 0 %}
+            <div class="product__miniItem"><strong>Variante:</strong> producto separado por marca</div>
+            {% endif %}
           </div>
         </div>
       </aside>

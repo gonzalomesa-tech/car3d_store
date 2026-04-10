@@ -192,6 +192,68 @@
         "nozzle": "0.4mm"
       },
       "license": "Pronto"
+    },
+    {
+      "id": "p006",
+      "name": "Garaje Chevrolet — Display 3D",
+      "slug": "garaje-chevrolet-display-3d",
+      "category": "Garajes",
+      "tags": [
+        "garaje",
+        "garage",
+        "display",
+        "box",
+        "chevrolet",
+        "camaro",
+        "diorama"
+      ],
+      "short_desc": "Mini garaje/display Chevrolet para autos a escala. Incluye 3 STL: caja Chevrolet + puerta universal + sujetador universal.",
+      "long_desc": "Display tipo mini garaje para autos a escala con frente Chevrolet. Este producto se vende por marca como ficha independiente, para que el catálogo muestre un producto separado por cada variante. El pack digital incluye 3 archivos STL: caja frontal Chevrolet, puerta universal y sujetador universal. La foto publicada corresponde al resultado armado de la versión Chevrolet.",
+      "price_label": "Desde US$ 9,99",
+      "digital_price_label": "US$ 9,99",
+      "printed_price_label": "US$ 18,99",
+      "digital_checkout_url": "https://pay.hotmart.com/G105328436P",
+      "printed_request_url": "https://w.app/qkprzm",
+      "images": [
+        "/static/img/garage-box-chevrolet-reference.png"
+      ],
+      "model_parts": [
+        {
+          "label": "Caja Chevrolet",
+          "note": "Pieza específica de esta marca.",
+          "glb": "/static/models/garage-box-caja-chevrolet.glb"
+        },
+        {
+          "label": "Puerta universal",
+          "note": "La misma pieza sirve para todas las marcas.",
+          "glb": "/static/models/garage-box-puerta.glb"
+        },
+        {
+          "label": "Sujetador universal",
+          "note": "La misma pieza sirve para todas las marcas.",
+          "glb": "/static/models/garage-box-sujetador.glb"
+        }
+      ],
+      "delivery_contents": [
+        "cajafinal_chevrolet.stl",
+        "puerta_universal.stl",
+        "sujetador_universal.stl"
+      ],
+      "materials": [
+        "PLA+",
+        "PETG",
+        "ABS/ASA"
+      ],
+      "print_settings": {
+        "layer_height": "0.20mm",
+        "infill": "15–25%",
+        "supports": "Solo donde haga falta",
+        "nozzle": "0.4mm"
+      },
+      "license": "Uso personal",
+      "delivery_format": "ZIP digital con 3 STL.",
+      "payment_note": "Opción digital por Hotmart a US$ 9,99. Opción impresa a US$ 18,99 mediante botón externo. Reemplaza ambos enlaces placeholder por tus URLs reales antes de publicar.",
+      "compatibility_note": "La foto de referencia corresponde a la versión Chevrolet."
     }
   ]
 }

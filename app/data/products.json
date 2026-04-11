@@ -33,167 +33,10 @@
       },
       "license": "Uso personal",
       "delivery_format": "Archivo STL digital entregado por Hotmart después del pago.",
-      "payment_note": "Checkout Hotmart con tarjeta de crédito o débito.",
-      "compatibility_note": "Tamaño pensado para la mayoria de los volantes, también puedes darle tamaño al STL dependiendo de tu volante o el tamaño que quieras.s"
+      "payment_note": "Pago procesado por Hotmart.",
+      "compatibility_note": "Tamaño pensado para una amplia variedad de volantes. El STL también puede escalarse según la medida que necesites."
     },
-    {
-      "id": "p001",
-      "name": "Soporte Gauge Pod 52mm — Universal",
-      "slug": "soporte-gauge-pod-52mm-universal",
-      "category": "Interior",
-      "tags": [
-        "gauge",
-        "pod",
-        "52mm",
-        "interior",
-        "tuning"
-      ],
-      "short_desc": "Soporte para reloj 52mm con look motorsport, listo para imprimir y montar.",
-      "long_desc": "Un gauge pod universal para relojes de 52mm pensado para interiores deportivos. Incluye tolerancias pensadas para post-proceso (lijado/pintura) y una base sólida para fijación con cinta 3M o tornillería. Ideal para presión de turbo, AFR, temperatura de aceite, etc.",
-      "price_label": "US$ 9,99",
-      "hotmart_url": "https://pay.hotmart.com/XXXXXX",
-      "preview_glb": "/static/models/demo.glb",
-      "images": [
-        "/static/img/hero.jpg"
-      ],
-      "materials": [
-        "PETG",
-        "ABS/ASA",
-        "PLA+ (bajo calor)"
-      ],
-      "print_settings": {
-        "layer_height": "0.20mm",
-        "infill": "20–30%",
-        "supports": "Sí (solo en overhangs)",
-        "nozzle": "0.4mm"
-      },
-      "license": "Uso personal (no reventa)"
-    },
-    {
-      "id": "p002",
-      "name": "Alerón GT — Spark (Concept)",
-      "slug": "aleron-gt-spark-concept",
-      "category": "Exterior",
-      "tags": [
-        "aleron",
-        "spoiler",
-        "gt",
-        "exterior",
-        "aero"
-      ],
-      "short_desc": "Alerón estilo GT (placeholder) para futuras versiones y ajustes por modelo.",
-      "long_desc": "Producto placeholder para el MVP. En la próxima etapa agregamos variantes, soportes, tornillería y preview 3D real.",
-      "price_label": "US$ 30,99",
-      "hotmart_url": "https://pay.hotmart.com/XXXXXX",
-      "preview_glb": "/static/models/demo.glb",
-      "images": [
-        "/static/img/hero.jpg"
-      ],
-      "materials": [
-        "PETG/ABS/ASA"
-      ],
-      "print_settings": {
-        "layer_height": "0.20mm",
-        "infill": "30–40%",
-        "supports": "Sí",
-        "nozzle": "0.4mm"
-      },
-      "license": "Pronto"
-    },
-    {
-      "id": "p003",
-      "name": "Front Lip — Spark (Concept)",
-      "slug": "front-lip-spark-concept",
-      "category": "Exterior",
-      "tags": [
-        "front lip",
-        "lip",
-        "splitter",
-        "exterior",
-        "aero"
-      ],
-      "short_desc": "Front lip / splitter (placeholder). Ideal para estética y look racing.",
-      "long_desc": "Producto placeholder para el MVP. Después sumamos versiones por paragolpes, montaje y tolerancias.",
-      "price_label": "US$ 24,99",
-      "hotmart_url": "https://pay.hotmart.com/XXXXXX",
-      "preview_glb": "/static/models/demo.glb",
-      "images": [
-        "/static/img/hero.jpg"
-      ],
-      "materials": [
-        "PETG/ABS/ASA"
-      ],
-      "print_settings": {
-        "layer_height": "0.20mm",
-        "infill": "25–35%",
-        "supports": "Sí (si aplica)",
-        "nozzle": "0.4mm"
-      },
-      "license": "Pronto"
-    },
-    {
-      "id": "p004",
-      "name": "Guardabarros Wide — Spark (Concept)",
-      "slug": "guardabarros-wide-spark-concept",
-      "category": "Exterior",
-      "tags": [
-        "guardabarros",
-        "wide",
-        "fender",
-        "overfender",
-        "exterior"
-      ],
-      "short_desc": "Overfender / guardabarros ancho (placeholder) para look widebody.",
-      "long_desc": "Producto placeholder para el MVP. Más adelante agregamos medidas exactas, encastres y preview 3D.",
-      "price_label": "US$ 14,99",
-      "hotmart_url": "https://pay.hotmart.com/XXXXXX",
-      "preview_glb": "/static/models/demo.glb",
-      "images": [
-        "/static/img/hero.jpg"
-      ],
-      "materials": [
-        "ABS/ASA (recomendado)",
-        "PETG"
-      ],
-      "print_settings": {
-        "layer_height": "0.24mm",
-        "infill": "20–30%",
-        "supports": "Sí",
-        "nozzle": "0.4mm"
-      },
-      "license": "Pronto"
-    },
-    {
-      "id": "p005",
-      "name": "Lip lateral — Spark (Concept)",
-      "slug": "lip-lateral-spark-concept",
-      "category": "Exterior",
-      "tags": [
-        "lip lateral",
-        "side skirt",
-        "skirts",
-        "exterior"
-      ],
-      "short_desc": "Lips laterales (placeholder) para completar el kit aero.",
-      "long_desc": "Producto placeholder para el MVP. Luego sumamos kit completo, variantes y visualización 3D.",
-      "price_label": "US$ 14,99",
-      "hotmart_url": "https://pay.hotmart.com/XXXXXX",
-      "preview_glb": "/static/models/demo.glb",
-      "images": [
-        "/static/img/hero.jpg"
-      ],
-      "materials": [
-        "PETG/ABS/ASA"
-      ],
-      "print_settings": {
-        "layer_height": "0.20mm",
-        "infill": "20–30%",
-        "supports": "Depende orientación",
-        "nozzle": "0.4mm"
-      },
-      "license": "Pronto"
-    },
-    {
+        {
       "id": "p006",
       "name": "Garaje Chevrolet — Display 3D",
       "slug": "garaje-chevrolet-display-3d",
@@ -208,7 +51,7 @@
         "diorama"
       ],
       "short_desc": "Mini garaje/display Chevrolet para autos a escala. Incluye 3 STL: caja Chevrolet + puerta universal + sujetador universal.",
-      "long_desc": "Display tipo mini garaje para autos a escala con frente Chevrolet. Este producto se vende por marca como ficha independiente, para que el catálogo muestre un producto separado por cada variante. El pack digital incluye 3 archivos STL: caja frontal Chevrolet, puerta universal y sujetador universal. La foto publicada corresponde al resultado armado de la versión Chevrolet.",
+      "long_desc": "Display tipo mini garaje para autos a escala con frente Chevrolet. Incluye tres archivos STL: caja frontal Chevrolet, puerta universal y sujetador universal. La imagen publicada corresponde al producto armado de la versión Chevrolet.",
       "price_label": "Desde US$ 9,99",
       "digital_price_label": "US$ 9,99",
       "printed_price_label": "US$ 18,99",
@@ -252,8 +95,166 @@
       },
       "license": "Uso personal",
       "delivery_format": "ZIP digital con 3 STL.",
-      "payment_note": "Opción digital por Hotmart a US$ 9,99. Opción impresa a US$ 18,99 mediante botón externo. Reemplaza ambos enlaces placeholder por tus URLs reales antes de publicar.",
+      "payment_note": "Opción digital disponible por Hotmart y opción impresa mediante solicitud externa.",
       "compatibility_note": "La foto de referencia corresponde a la versión Chevrolet."
+    },
+    {
+      "id": "p001",
+      "name": "Soporte Gauge Pod 52mm — Universal",
+      "slug": "soporte-gauge-pod-52mm-universal",
+      "category": "Interior",
+      "tags": [
+        "gauge",
+        "pod",
+        "52mm",
+        "interior",
+        "tuning"
+      ],
+      "short_desc": "Soporte para reloj de 52 mm con estética motorsport, listo para imprimir y montar.",
+      "long_desc": "Gauge pod universal para relojes de 52 mm, diseñado para interiores deportivos. Considera espacio para post-proceso y ofrece una base firme para fijación con cinta 3M o tornillería.",
+      "price_label": "US$ 9,99",
+      "hotmart_url": "https://pay.hotmart.com/XXXXXX",
+      "preview_glb": "/static/models/demo.glb",
+      "images": [
+        "/static/img/hero.jpg"
+      ],
+      "materials": [
+        "PETG",
+        "ABS/ASA",
+        "PLA+ (bajo calor)"
+      ],
+      "print_settings": {
+        "layer_height": "0.20mm",
+        "infill": "20–30%",
+        "supports": "Sí (solo en overhangs)",
+        "nozzle": "0.4mm"
+      },
+      "license": "Uso personal (no reventa)",
+      "payment_note": "Pago procesado por Hotmart."
+    },
+    {
+      "id": "p002",
+      "name": "Alerón GT — Spark",
+      "slug": "aleron-gt-spark-concept",
+      "category": "Exterior",
+      "tags": [
+        "aleron",
+        "spoiler",
+        "gt",
+        "exterior",
+        "aero"
+      ],
+      "short_desc": "Alerón estilo GT para proyectos de personalización y estética deportiva.",
+      "long_desc": "Diseño de alerón GT para Chevrolet Spark, pensado para proyectos de personalización exterior y exhibición. La ficha se mantiene visible como referencia del catálogo mientras se amplían sus detalles de montaje y compatibilidad.",
+      "price_label": "US$ 30,99",
+      "hotmart_url": "https://pay.hotmart.com/XXXXXX",
+      "preview_glb": "/static/models/demo.glb",
+      "images": [
+        "/static/img/hero.jpg"
+      ],
+      "materials": [
+        "PETG/ABS/ASA"
+      ],
+      "print_settings": {
+        "layer_height": "0.20mm",
+        "infill": "30–40%",
+        "supports": "Sí",
+        "nozzle": "0.4mm"
+      },
+      "license": "Próximamente"
+    },
+    {
+      "id": "p003",
+      "name": "Front Lip — Spark",
+      "slug": "front-lip-spark-concept",
+      "category": "Exterior",
+      "tags": [
+        "front lip",
+        "lip",
+        "splitter",
+        "exterior",
+        "aero"
+      ],
+      "short_desc": "Front lip tipo splitter para realzar la estética frontal del Chevrolet Spark.",
+      "long_desc": "Diseño de front lip para Chevrolet Spark orientado a proyectos de personalización exterior. Esta ficha forma parte del catálogo de desarrollo y se actualizará con información adicional de montaje y compatibilidad.",
+      "price_label": "US$ 24,99",
+      "hotmart_url": "https://pay.hotmart.com/XXXXXX",
+      "preview_glb": "/static/models/demo.glb",
+      "images": [
+        "/static/img/hero.jpg"
+      ],
+      "materials": [
+        "PETG/ABS/ASA"
+      ],
+      "print_settings": {
+        "layer_height": "0.20mm",
+        "infill": "25–35%",
+        "supports": "Sí (si aplica)",
+        "nozzle": "0.4mm"
+      },
+      "license": "Próximamente"
+    },
+    {
+      "id": "p004",
+      "name": "Guardabarros Wide — Spark",
+      "slug": "guardabarros-wide-spark-concept",
+      "category": "Exterior",
+      "tags": [
+        "guardabarros",
+        "wide",
+        "fender",
+        "overfender",
+        "exterior"
+      ],
+      "short_desc": "Juego de guardabarros anchos para una estética widebody más agresiva.",
+      "long_desc": "Diseño de guardabarros anchos para Chevrolet Spark enfocado en proyectos de personalización exterior. La ficha permanecerá publicada mientras se incorporan más detalles de compatibilidad y terminación.",
+      "price_label": "US$ 14,99",
+      "hotmart_url": "https://pay.hotmart.com/XXXXXX",
+      "preview_glb": "/static/models/demo.glb",
+      "images": [
+        "/static/img/hero.jpg"
+      ],
+      "materials": [
+        "ABS/ASA (recomendado)",
+        "PETG"
+      ],
+      "print_settings": {
+        "layer_height": "0.24mm",
+        "infill": "20–30%",
+        "supports": "Sí",
+        "nozzle": "0.4mm"
+      },
+      "license": "Próximamente"
+    },
+    {
+      "id": "p005",
+      "name": "Lip lateral — Spark",
+      "slug": "lip-lateral-spark-concept",
+      "category": "Exterior",
+      "tags": [
+        "lip lateral",
+        "side skirt",
+        "skirts",
+        "exterior"
+      ],
+      "short_desc": "Lips laterales para complementar una línea exterior más deportiva.",
+      "long_desc": "Diseño de lip lateral para Chevrolet Spark pensado para completar proyectos de personalización exterior. La información comercial y técnica de esta ficha seguirá ampliándose en próximas actualizaciones.",
+      "price_label": "US$ 14,99",
+      "hotmart_url": "https://pay.hotmart.com/XXXXXX",
+      "preview_glb": "/static/models/demo.glb",
+      "images": [
+        "/static/img/hero.jpg"
+      ],
+      "materials": [
+        "PETG/ABS/ASA"
+      ],
+      "print_settings": {
+        "layer_height": "0.20mm",
+        "infill": "20–30%",
+        "supports": "Depende orientación",
+        "nozzle": "0.4mm"
+      },
+      "license": "Próximamente"
     }
   ]
 }

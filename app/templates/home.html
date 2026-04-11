@@ -6,24 +6,24 @@
     <div class="hero__copy">
       <h1 class="hero__title">Car3D Files</h1>
       <p class="hero__subtitle">
-        Archivos listos para imprimir en 3D orientados a autos: interior, exterior, soportes, detalles y upgrades.
+        Diseños 3D para autos listos para imprimir: piezas de interior, exterior, accesorios y displays para colección.
       </p>
 
       <div class="hero__cta">
         <a class="btn btn--primary" href="/catalog">Ver catálogo</a>
-        <a class="btn btn--ghost" href="/faq">Cómo funciona</a>
+        <a class="btn btn--ghost" href="/faq">Cómo comprar</a>
       </div>
 
       <div class="hero__notes">
-        <span class="chip">Descarga instantánea</span>
-        <span class="chip">STL/3MF/GLB preview</span>
+        <span class="chip">Entrega digital</span>
+        <span class="chip">Vista previa 3D</span>
       </div>
     </div>
 
     <div class="hero__media card card--padded">
       <div class="card__header">
-        <div class="card__title">Demo Viewer 3D</div>
-        <div class="muted">Rota, acerca y selecciona una pieza para ver productos relacionados (MVP).</div>
+        <div class="card__title">Explora piezas en 3D</div>
+        <div class="muted">Rota el modelo y navega por categorías relacionadas.</div>
       </div>
 
       <div class="viewer3d">
@@ -36,10 +36,8 @@
           exposure="1"
           interaction-prompt="auto"
           ar
-          alt="Sparkito 3D"
+          alt="Modelo 3D Car3D Files"
         >
-          <!-- Hotspots: se mantienen para usar click directo si lo necesitas,
-               pero ocultamos el texto con CSS y dejamos solo el punto -->
           <button
             class="mv-hotspot"
             slot="hotspot-ale"
@@ -89,7 +87,6 @@
           </button>
         </model-viewer>
 
-        <!-- ✅ Lista vertical de piezas (en filas hacia abajo) -->
         <div class="part-list mt12">
           <a class="part-item" href="/catalog?q=aleron">Alerón</a>
           <a class="part-item" href="/catalog?q=front%20lip">Front lip</a>
@@ -97,40 +94,9 @@
           <a class="part-item" href="/catalog?q=lip%20lateral">Lip lateral</a>
         </div>
 
-        <!-- Botón -->
         <div class="mt12">
-          <a class="btn btn--ghost" href="/autos">busca tu auto</a>
+          <a class="btn btn--ghost" href="/autos">Ver autos</a>
         </div>
-
-        <!--
-        ✅ PANEL DE CALIBRACIÓN (OCULTO POR AHORA)
-
-        <details class="calib card card--padded mt12">
-          <summary class="calib__summary">Calibración de hotspots (MVP)</summary>
-
-          <div class="muted small mt8">
-            1) Mantén presionada ALT/SHIFT/CTRL y haz clic en la parte exacta del modelo.<br>
-            2) Luego presiona “Asignar” en la pieza correspondiente.<br>
-            3) Se guarda automáticamente (localStorage).
-          </div>
-
-          <div class="calib__row mt12">
-            <button class="btn btn--ghost btn--sm" type="button" data-assign="hotspot-ale">Asignar → Alerón</button>
-            <button class="btn btn--ghost btn--sm" type="button" data-assign="hotspot-frontlip">Asignar → Front lip</button>
-            <button class="btn btn--ghost btn--sm" type="button" data-assign="hotspot-guard">Asignar → Guardabarros</button>
-            <button class="btn btn--ghost btn--sm" type="button" data-assign="hotspot-side">Asignar → Lip lateral</button>
-          </div>
-
-          <div class="calib__row mt10">
-            <button class="btn btn--ghost btn--sm" type="button" data-calib-reset>Restablecer calibración</button>
-          </div>
-
-          <div class="field mt12">
-            <label class="label" for="calibOut">Último punto (copiable)</label>
-            <textarea id="calibOut" class="textarea" rows="3" readonly></textarea>
-          </div>
-        </details>
-        -->
       </div>
     </div>
   </div>
@@ -143,11 +109,12 @@
       <a class="link" href="/catalog">Ver todo →</a>
     </div>
 
+    {% if featured and featured|length > 0 %}
     <div class="grid grid--3">
       {% for p in featured %}
       <a class="card card--hover" href="/p/{{ p.slug }}">
         <div class="card__thumb"
-             style="background-image:url('{{ (p.images[0] if p.images and p.images|length > 0 else '/static/img/hero.jpg') }}')">
+             style="background-image:url('{{ p.images[0] }}')">
         </div>
 
         <div class="card__body">
@@ -167,6 +134,12 @@
       </a>
       {% endfor %}
     </div>
+    {% else %}
+    <div class="empty card card--padded">
+      <div class="empty__title">Próximamente</div>
+      <div class="muted">Estamos preparando nuevos productos destacados para esta sección.</div>
+    </div>
+    {% endif %}
   </div>
 </section>
 {% endblock %}
